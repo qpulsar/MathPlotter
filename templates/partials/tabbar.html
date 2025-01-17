@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/tabbar.css' %}">
 
-</body>
-</html>
+<div class="tabbar d-flex align-items-center bg-light border-bottom px-2 py-1">
+    <!-- Left side - Tabs -->
+    <div class="tabs-section d-flex align-items-center">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-sm btn-outline-secondary active">
+                <i class="fas fa-code"></i> Kod
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-puzzle-piece"></i> Kostümler
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+                <i class="fas fa-volume-up"></i> Sesler
+            </button>
+        </div>
+    </div>
+
+    <!-- Center - Start/Stop Buttons -->
+    <div class="control-buttons mx-auto">
+        <button type="button" class="btn btn-sm btn-success me-1" id="btnStart">
+            <i class="fas fa-play"></i> Başlat
+        </button>
+        <button type="button" class="btn btn-sm btn-danger" id="btnStop">
+            <i class="fas fa-stop"></i> Bitir
+        </button>
+    </div>
+
+    <!-- Right side - Window Controls -->
+    <div class="window-controls">
+        <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-outline-secondary" id="btnMinimize">
+                <i class="fas fa-window-minimize"></i>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" id="btnMaximize">
+                <i class="fas fa-window-maximize"></i>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" id="btnFullscreen">
+                <i class="fas fa-expand"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/tabbar.js' %}"></script>

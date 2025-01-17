@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/footbar.css' %}">
 
-</body>
-</html>
+<div class="footbar">
+    <div class="d-flex h-100">
+        <!-- Status area -->
+        <div class="status-item">
+            <i class="fas fa-info-circle me-1"></i>
+            <span id="statusText">Hazır</span>
+        </div>
+        
+        <!-- Mouse coordinates -->
+        <div class="status-item">
+            <i class="fas fa-mouse-pointer me-1"></i>
+            X: <span id="mouseX" class="mx-1">0</span>
+            Y: <span id="mouseY" class="mx-1">0</span>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/footbar.js' %}"></script>

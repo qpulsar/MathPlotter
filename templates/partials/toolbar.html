@@ -1,10 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'css/toolbar.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" height="30" class="d-inline-block align-text-top">
+                MathPlotter
+            </a>
 
-</body>
-</html>
+            <!-- Toggler for mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- File dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Dosya
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file"></i> Yeni</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-folder-open"></i> Aç</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-save"></i> Kaydet</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Edit dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Düzenle
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-undo"></i> Geri Al</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-redo"></i> İleri Al</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cut"></i> Kes</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-copy"></i> Kopyala</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-paste"></i> Yapıştır</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Settings dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Ayarlar
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Tercihler</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-palette"></i> Tema</a></li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                    <i class="fas fa-language"></i> Dil
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#" data-lang="tr"><i class="fas fa-check me-2 {% if LANGUAGE_CODE == 'tr' %}visible{% else %}invisible{% endif %}"></i>Türkçe</a></li>
+                                    <li><a class="dropdown-item" href="#" data-lang="en"><i class="fas fa-check me-2 {% if LANGUAGE_CODE == 'en' %}visible{% else %}invisible{% endif %}"></i>İngilizce</a></li>
+                                    <li><a class="dropdown-item" href="#" data-lang="de"><i class="fas fa-check me-2 {% if LANGUAGE_CODE == 'de' %}visible{% else %}invisible{% endif %}"></i>Almanca</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Right side - Login/Profile -->
+                <div class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <img src="{% static 'images/default-avatar.png' %}" alt="Profile" class="rounded-circle" width="32" height="32">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Profil</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Ayarlar</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Çıkış</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-outline-primary">
+                            <i class="fas fa-sign-in-alt"></i> Giriş
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
